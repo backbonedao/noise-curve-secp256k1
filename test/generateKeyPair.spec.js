@@ -30,7 +30,7 @@ test('throws an error on invalid privkey', (t) => {
   const nativeKP = secpNative.generateKeyPair()
 
   t.throws(() => secp256k1.generateKeyPair(nativeKP.publicKey), {
-    message: 'Expected Private',
+    message: 'Expected 32 bytes of private key',
     instanceOf: Error
   })
 })

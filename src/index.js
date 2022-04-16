@@ -1,5 +1,8 @@
 import { createHash, randomBytes } from 'crypto'
-import * as secp from 'tiny-secp256k1'
+// import * as secp from 'tiny-secp256k1'
+import * as secp from "@noble/secp256k1";
+// @ts-ignore
+import Buffer from 'b4a'
 
 /**
  * @typedef {{
@@ -22,7 +25,8 @@ const generateKeyPair = (privKey) => {
 
   return {
     secretKey,
-    publicKey: secp.pointFromScalar(secretKey, true)
+    // publicKey: secp.pointFromScalar(secretKey, true)
+    publicKey: Buffer.from(secp.getPublicKey(secretKey, true))
   }
 }
 
@@ -40,17 +44,21 @@ const generateSeedKeyPair = (seed) =>
  * @param {Buffer} lsk Local secretKey
  * @returns {Buffer}
  */
-const dh = (pk, lsk) =>
-  createHash('sha256')
+const dh = (pk, lsk) => {
+  // const pkp = secp.Point.fromPrivateKey(pk)
+  // const multiplied = secp.Point()
+  const shared_secret = secp.getSharedSecret(lsk, Buffer.from(pk), true)
+  return createHash('sha256')
     // Coercing `pk` to Buffer
     // Noise-handshake uses `buffer.subarray` on pk before passing it here.
     // In browsers `buffer.subarray` can return a Uint8Array that isn't an
     //  instance of `Buffer`.
     // In `pointMultiply`, an `isPoint(pk)` will be performed which verify
     //  `Buffer.isBuffer(pk)` which would return false and throws an error.
-    .update(secp.pointMultiply(Buffer.from(pk), lsk))
+    // .update(secp.pointMultiply(Buffer.from(pk), lsk))
+    .update(shared_secret)
     .digest()
-
+}
 /**
  * @type {{
  *  DHLEN: number;
