@@ -1,24 +1,32 @@
 {
-  "name": "noise-curve-tiny-secp",
-  "version": "2.0.0",
-  "description": "JS `secp256k1` elliptic curve operations for use with [`noise-handshake`](https://github.com/chm-diederichs/noise-handshake)",
-  "type": "module",
+  "name": "@backbonedao/noise-curve-secp256k1",
+  "version": "1.0.0",
+  "description": "",
   "keywords": [
     "noise-handshake",
-    "secp256k1",
-    "tiny-secp256k1"
+    "secp256k1"
   ],
-  "homepage": "https://github.com/synonymdev/noise-curve-tiny-secp256k1#readme",
+  "homepage": "https://github.com/backbonedao/noise-curve-secp256k1#readme",
   "bugs": {
-    "url": "https://github.com/synonymdev/noise-curve-tiny-secp256k1/issues"
+    "url": "https://github.com/backbonedao/noise-curve-secp256k1/issues"
   },
-  "license": "MIT",
-  "author": "Nazeh <ar.nazeh@gmail.com>",
+  "license": "AGPL-3.0-or-later",
+  "contributors": [
+    {
+      "name": "backbone://dao",
+      "email": "team@backbonedao.com",
+      "url": "https://backbonedao.com"
+    },
+    {
+      "name": "Nazeh",
+      "email": "ar.nazeh@gmail.com"
+    }
+  ],
   "types": "./types/index.d.ts",
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/synonymdev/noise-curve-tiny-secp256k1.git"
+    "url": "git+https://github.com/backbonedao/noise-curve-secp256k1.git"
   },
   "scripts": {
     "lint": "standard --fix",
