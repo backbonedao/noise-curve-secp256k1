@@ -1,5 +1,5 @@
-import test from 'ava'
-import { secp256k1 } from '../src/index.js'
+const test = require('ava')
+const secp256k1 = require('../src/index.js')
 
 test('generate a keypair from seed', (t) => {
   t.deepEqual(secp256k1.generateSeedKeyPair('hello world!'), {

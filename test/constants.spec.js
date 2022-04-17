@@ -1,6 +1,6 @@
-import test from 'ava'
-import { secp256k1 } from '../src/index.js'
-import secp256k1Native from 'noise-curve-secp'
+const test = require('ava')
+const secp256k1 = require('../src/index.js')
+const secp256k1Native = require('noise-curve-secp')
 
 test('constants exports', (t) => {
   delete secp256k1.generateKeyPair

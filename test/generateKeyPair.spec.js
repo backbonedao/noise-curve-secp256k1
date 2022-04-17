@@ -1,6 +1,6 @@
-import test from 'ava'
-import secpNative from 'noise-curve-secp'
-import { secp256k1 } from '../src/index.js'
+const test = require('ava')
+const secpNative = require('noise-curve-secp')
+const secp256k1 = require('../src/index.js')
 
 test('generate a keypair with a privkey', (t) => {
   const privKey = Buffer.from(

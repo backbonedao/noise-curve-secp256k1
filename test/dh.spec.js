@@ -1,6 +1,6 @@
-import test from "ava"
-import secpNative from "noise-curve-secp"
-import { secp256k1 } from "../src/index.js"
+const test = require("ava")
+const secpNative = require("noise-curve-secp")
+const secp256k1 = require("../src/index.js")
 
 test("dh", (t) => {
   const localPrivKey = Buffer.from(
@@ -25,7 +25,7 @@ test("dh", (t) => {
     secp256k1.dh(A.publicKey, B.secretKey)
   )
   const shared = secp256k1.dh(A.publicKey, B.secretKey)
-  t.deepEqual(shared, output)
+  t.deepEqual(shared, output.toString('hex'))
 })
 
 test("throw error on invalid arguments", (t) => {

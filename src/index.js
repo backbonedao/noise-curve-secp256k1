@@ -1,5 +1,5 @@
-const { createHash, randomBytes } = require('../../backbone-crypto')
-// const * as secp = require('tiny-secp256k1')
+// @ts-ignore
+const { createHash, randomBytes } = require('@backbonedao/crypto')
 const secp = require("@noble/secp256k1")
 // @ts-ignore
 const Buffer = require('b4a')
@@ -36,7 +36,7 @@ const generateKeyPair = (privKey) => {
  * @returns {KeyPair}
  */
 const generateSeedKeyPair = (seed) =>
-  generateKeyPair(createHash('sha256').update(seed).digest())
+  generateKeyPair(Buffer.from(createHash(seed), 'hex'))
 
 /**
  * Perform DH between `pk` and `lsk` and return the result.

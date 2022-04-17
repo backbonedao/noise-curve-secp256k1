@@ -34,6 +34,7 @@
     "test": "hundreds ava"
   },
   "dependencies": {
+    "@backbonedao/crypto": "github:backbonedao/crypto",
     "@noble/secp256k1": "^1.5.5",
     "b4a": "^1.3.1"
   },
